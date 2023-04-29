@@ -147,3 +147,11 @@ gene_to_select2 <- lapply(gene_to_select,function(x){
 #将没有行名的data frame中的Gene列变成行名：textshape包
 tibble::column_to_rownames("Gene")
 
+#基因注释：https://www.jianshu.com/p/8eea4f39db0aensembl_id转换与gene symbol基因名去重复的两种方法
+geneid<-bitr(rownames(res),fromType = "ENSEMBL",toType = "SYMBOL",
+             OrgDb = "org.Hs.eg.db",drop=T)#去除空值
+dim(geneid)
+res_1<-res[rownames(res)%in%geneid[,1],]
+dim(res_1)
+geneid<-geneid[match(rownames(res_1),geneid[,1]),]
+rownames(res_1)<-geneid$SYMBOL
