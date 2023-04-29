@@ -23,9 +23,9 @@ c <- as.data.frame(matrix(data=NA,nrow=100,ncol=100))
 #将稀疏矩阵转化为矩阵（不用导入导出csv了）
 a <- as(sce.integrated4_HC@assays$RNA@counts, "matrix")
 
-#学会使用apply
+#学会使用apply：http://blog.fens.me/r-apply/
 a =apply(test,1,mean)  #计算行的平均值
-a =apply(test,2,mean) #计算行的标准差
+a =apply(test,2,mean) #计算列的标准差
 
 ##管道操作符https://zhuanlan.zhihu.com/p/22955050?refer=rdatamining
 ##  注意 “.” 即指代前面的变量
@@ -33,6 +33,8 @@ filter(flights, month == 1, day == 1) #筛选：且
 filter(flights, month == 1 | month == 2) #筛选：或
 arrange(flights, year, month, day，desc(a)) #依次排序  desc()为倒叙
 select(flights, year, month, day) #选取特定列
+
+
 select(flights, year:day) #选取特定列
 distinct(select(flights, origin, dest)) #选取了origin和dest列中不一致的行
 a <- test %>% filter(between(row_number(), 1,n()))  #选取第一到最后一行，n()表示最后一行
