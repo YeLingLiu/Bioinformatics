@@ -144,4 +144,6 @@ gene_to_select2 <- lapply(gene_to_select,function(x){
     arrange(P.Value) %>% .[1:20,]
 })
 
+#将没有行名的data frame中的Gene列变成行名：textshape包
+tibble::column_to_rownames("Gene")
 
