@@ -112,7 +112,7 @@ DEG_compare_yuxin <- function(test1){
 #
 substitute() #变量名称转化为字符串
 
-#分列，df是矩阵，b是要分的列，bc是新名字
+#分列，df是矩阵，b是要分的列，bc是新名字,sep = "_"指的是在_前进行切割
 df<-separate(df,b,into = c("b","c"),sep = "_") 
 
 ##数值转化的问题
